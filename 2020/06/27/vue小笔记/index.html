@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"perjust.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="vue初学时的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue小笔记">
+<meta property="og:url" content="https://perjust.github.io/2020/06/27/vue%E5%B0%8F%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="perJust_blog">
+<meta property="og:description" content="vue初学时的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T12:00:32.834Z">
+<meta property="article:modified_time" content="2020-06-27T12:23:04.732Z">
+<meta property="article:author" content="perJust">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://perjust.github.io/2020/06/27/vue%E5%B0%8F%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue小笔记 | perJust_blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">perJust_blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/27/vue%E5%B0%8F%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="perJust">
+      <meta itemprop="description" content="分享技术，记录成长">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="perJust_blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue小笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-27 20:00:32 / 修改时间：20:23:04" itemprop="dateCreated datePublished" datetime="2020-06-27T20:00:32+08:00">2020-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/" itemprop="url" rel="index"><span itemprop="name">很早前写的</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue%E5%88%9D%E7%89%88/" itemprop="url" rel="index"><span itemprop="name">vue初版</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>vue初学时的笔记</p>
+<a id="more"></a>
+
+<blockquote>
+<p>vue属性绑定时，如果是传入’{}’,那括号内的是对象</p>
+</blockquote>
+<ul>
+<li>譬如class、style属性绑定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;position: relative;&quot;&gt;&lt;div :style&#x3D;&quot;&#123;width: &#39;100px&#39;,height: &#39;100px&#39;,position: &#39;absolute&#39;,top: 0,left: left&#125;&quot; v-selfd&#x3D;&quot;divBgc&quot;&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p :style&#x3D;&quot;&#123;color:&#39;#f40&#39;,fontSize:fontsize&#125;&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="注意是对象，用’-’隔开，另外’font-size’写成了’fontSize’-且键值对的写法，value要用字符串形式-color-’-f40’"><a href="#注意是对象，用’-’隔开，另外’font-size’写成了’fontSize’-且键值对的写法，value要用字符串形式-color-’-f40’" class="headerlink" title="注意是对象，用’,’隔开，另外’font-size’写成了’fontSize’  且键值对的写法，value要用字符串形式 color:’#f40’"></a>注意是对象，用’,’隔开，另外’font-size’写成了’fontSize’  且键值对的写法，value要用字符串形式 color:’#f40’</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot; color:#f40 &quot; &gt;&lt;&#x2F;div&gt;  &#x2F;&#x2F;原生写法没有引号</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<blockquote>
+<p>引号与反引号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;mount-point&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建构造器</span><br><span class="line">var Profile &#x3D; Vue.extend(&#123;</span><br><span class="line">  template: &#39;&lt;p&gt;&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125; aka  &#123;&#123;alias&#125;&#125;&lt;&#x2F;p&gt;&#39;,    &#x2F;&#x2F;使用了引号，且写在了一行  没有使用换行</span><br><span class="line">  data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      firstName: &#39;Walter&#39;,</span><br><span class="line">      lastName: &#39;White&#39;,</span><br><span class="line">      alias: &#39;Heisenberg&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 创建 Profile 实例，并挂载到一个元素上。</span><br><span class="line">new Profile().$mount(&#39;#mount-point&#39;)</span><br></pre></td></tr></table></figure>
+<h6 id="以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。"><a href="#以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。" class="headerlink" title="以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。"></a>以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。</h6><h6 id="如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’-39-。。或者使用’-’拼凑-。。或者改用反引号-如下："><a href="#如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’-39-。。或者使用’-’拼凑-。。或者改用反引号-如下：" class="headerlink" title="如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’&#39;。。或者使用’+’拼凑  。。或者改用反引号  如下："></a>如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’&#39;。。或者使用’+’拼凑  。。或者改用反引号  如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">const self &#x3D; Vue.extend(&#123;</span><br><span class="line">           &#x2F;&#x2F; template:&quot;&lt;h1&gt;&quot; + count + &quot;&lt;&#x2F;h1&gt;&quot;, error</span><br><span class="line">           &#x2F;&#x2F; template:&quot;&lt;h1&gt;&quot; + &quot;&#123;&#123;count&#125;&#125;&quot; + &quot;&lt;&#x2F;h1&gt;&quot;,&#x2F;&#x2F;ok</span><br><span class="line"></span><br><span class="line">           &#x2F;&#x2F; template:&#39;    error!!!!!    引号是不能实现换行控制的，除非用&#39;+&#39;拼凑起来,或者末尾使用转义字符,把换行符转义了，或者改用反引号</span><br><span class="line">           &#x2F;&#x2F;     &#123;&#123;count&#125;&#125;</span><br><span class="line">           &#x2F;&#x2F;     &lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">           &#x2F;&#x2F;     &#39;,</span><br><span class="line">           template:&#39;&lt;div&gt;\</span><br><span class="line">           &#123;&#123;count&#125;&#125;&lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;\</span><br><span class="line">           &lt;&#x2F;div&gt;&#39;,         &#x2F;&#x2F;如果想换行  换行处使用转移符&#39;\&#39;</span><br><span class="line">           &#x2F;&#x2F; template:&#39;&lt;div&gt;&#39; +    &#x2F;&#x2F;It&#39;s ok</span><br><span class="line">           &#x2F;&#x2F;         &#39;&#123;&#123;count&#125;&#125;&#39; +</span><br><span class="line">           &#x2F;&#x2F;         &#39;&lt;&#x2F;div&gt;&#39;</span><br><span class="line">           &#x2F;&#x2F; ,</span><br><span class="line">           &#x2F;&#x2F;template:&#96;&lt;div&gt;  &#x2F;&#x2F;反引号ok</span><br><span class="line">           &#x2F;&#x2F;&#123;&#123;count&#125;&#125;&lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">           &#x2F;&#x2F;&lt;&#x2F;div&gt;&#96;,</span><br><span class="line">           data()&#123;</span><br><span class="line">               return &#123;</span><br><span class="line">                   count:1,</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           methods:&#123;</span><br><span class="line">               add()&#123;</span><br><span class="line">                   this.count ++;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>component是使用的反引号，可以随意换行，暂不能拼接</p>
+</blockquote>
+<h5 id="Vue-extend和component都可以随意使用引号或者反引号"><a href="#Vue-extend和component都可以随意使用引号或者反引号" class="headerlink" title="Vue.extend和component都可以随意使用引号或者反引号"></a>Vue.extend和component都可以随意使用引号或者反引号</h5><h5 id="咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下："><a href="#咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下：" class="headerlink" title="咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下："></a>咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下：</h5><h6 id="template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"><a href="#template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；" class="headerlink" title="template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"></a>template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；</h6><hr>
+<blockquote>
+<p>eslint规范</p>
+</blockquote>
+<ol>
+<li>键值对空格规范，对象内键值对规范如下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    message: &#39;part&#39;    &#x2F;&#x2F;key没有空格   value有一个空格且用单引号</span><br><span class="line">    data () &#123;    &#x2F;&#x2F;写简写方式时 ()前后都有空格</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    &#123; &#x2F;&#x2F; 分配路由   &#x2F;&#x2F;前后各空一格</span><br><span class="line">      path: &#39;&#x2F;p&#39;,</span><br><span class="line">      name: &#39;part1&#39;,</span><br><span class="line">      component: Part1</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>.vue文件 文件名以大驼峰形式  如：HelloWorld.vue </li>
+</ol>
+<hr>
+<blockquote>
+<p>文件路径写法</p>
+</blockquote>
+<h6 id="‘-‘-当前文件夹"><a href="#‘-‘-当前文件夹" class="headerlink" title="‘./‘   当前文件夹"></a>‘./‘   当前文件夹</h6><h6 id="‘-‘-父级文件夹"><a href="#‘-‘-父级文件夹" class="headerlink" title="‘../‘  父级文件夹"></a>‘../‘  父级文件夹</h6><h6 id="‘-‘-‘-’是webpack定义的-可以在’webpack-base-conf-js’中查看‘-’的代表路径是什么-一般vue-cli中‘-’指向的是’src’文件夹"><a href="#‘-‘-‘-’是webpack定义的-可以在’webpack-base-conf-js’中查看‘-’的代表路径是什么-一般vue-cli中‘-’指向的是’src’文件夹" class="headerlink" title="‘@/‘  ‘@’是webpack定义的  可以在’webpack.base.conf.js’中查看‘@’的代表路径是什么  一般vue-cli中‘@’指向的是’src’文件夹"></a>‘@/‘  ‘@’是webpack定义的  可以在’webpack.base.conf.js’中查看‘@’的代表路径是什么  一般vue-cli中‘@’指向的是’src’文件夹</h6><hr>
+<h6 id="dist目录-distrubution发布"><a href="#dist目录-distrubution发布" class="headerlink" title="dist目录 distrubution发布"></a>dist目录 distrubution发布</h6><hr>
+<h6 id="npm-install-axios-–save-后面的’–save’是安装时在package-json注册就可以在生产d环境用了"><a href="#npm-install-axios-–save-后面的’–save’是安装时在package-json注册就可以在生产d环境用了" class="headerlink" title="npm install axios –save  后面的’–save’是安装时在package.json注册就可以在生产d环境用了"></a>npm install axios –save  后面的’–save’是安装时在package.json注册就可以在生产d环境用了</h6><blockquote>
+<p>意思就是，生产环境时(需要放在服务器的)就需要’–save’</p>
+</blockquote>
+<hr>
+<h6 id="组件的周期"><a href="#组件的周期" class="headerlink" title="组件的周期"></a>组件的周期</h6><ul>
+<li><input checked="" disabled="" type="checkbox"> 组件是可复用的 Vue 实例，且带有一个名字：在这个例子中是 <button-counter>。我们可以在一个通过 new Vue 创建的 Vue 根实例中，把这个组件作为自定义元素来使用;</li>
+<li><input checked="" disabled="" type="checkbox"> 因为组件是可复用的 Vue 实例，所以它们与 new Vue 接收相同的选项，例如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/components.html#%E5%9F%BA%E6%9C%AC%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">官方链接</a></p>
+</blockquote>
+</li>
+</ul>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/webpack/" rel="prev" title="webpack">
+      <i class="fa fa-chevron-left"></i> webpack
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/vueComponent/" rel="next" title="vueComponent">
+      vueComponent <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#注意是对象，用’-’隔开，另外’font-size’写成了’fontSize’-且键值对的写法，value要用字符串形式-color-’-f40’"><span class="nav-number">1.</span> <span class="nav-text">注意是对象，用’,’隔开，另外’font-size’写成了’fontSize’  且键值对的写法，value要用字符串形式 color:’#f40’</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。"><span class="nav-number">2.</span> <span class="nav-text">以上template使用的是引号，且只能写在一行，因为引号是无法响应换行符的，会直接在换行符处截止。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’-39-。。或者使用’-’拼凑-。。或者改用反引号-如下："><span class="nav-number">3.</span> <span class="nav-text">如果使用引号而且想换行，可以在需要换行的末尾使用转义字符’&#39;。。或者使用’+’拼凑  。。或者改用反引号  如下：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vue-extend和component都可以随意使用引号或者反引号"><span class="nav-number"></span> <span class="nav-text">Vue.extend和component都可以随意使用引号或者反引号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下："><span class="nav-number"></span> <span class="nav-text">咱总结如下：其实可以随意使用引号或者是反引号，选用引号的问题就是如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"><span class="nav-number">1.</span> <span class="nav-text">template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#‘-‘-当前文件夹"><span class="nav-number">2.</span> <span class="nav-text">‘.&#x2F;‘   当前文件夹</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#‘-‘-父级文件夹"><span class="nav-number">3.</span> <span class="nav-text">‘..&#x2F;‘  父级文件夹</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#‘-‘-‘-’是webpack定义的-可以在’webpack-base-conf-js’中查看‘-’的代表路径是什么-一般vue-cli中‘-’指向的是’src’文件夹"><span class="nav-number">4.</span> <span class="nav-text">‘@&#x2F;‘  ‘@’是webpack定义的  可以在’webpack.base.conf.js’中查看‘@’的代表路径是什么  一般vue-cli中‘@’指向的是’src’文件夹</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dist目录-distrubution发布"><span class="nav-number">5.</span> <span class="nav-text">dist目录 distrubution发布</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#npm-install-axios-–save-后面的’–save’是安装时在package-json注册就可以在生产d环境用了"><span class="nav-number">6.</span> <span class="nav-text">npm install axios –save  后面的’–save’是安装时在package.json注册就可以在生产d环境用了</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#组件的周期"><span class="nav-number">7.</span> <span class="nav-text">组件的周期</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="perJust"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">perJust</p>
+  <div class="site-description" itemprop="description">分享技术，记录成长</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/perJust" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;perJust" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">perJust</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">79k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:12</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

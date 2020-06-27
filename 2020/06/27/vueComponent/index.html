@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"perjust.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="vue 组件化初学时的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vueComponent">
+<meta property="og:url" content="https://perjust.github.io/2020/06/27/vueComponent/index.html">
+<meta property="og:site_name" content="perJust_blog">
+<meta property="og:description" content="vue 组件化初学时的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T12:21:50.936Z">
+<meta property="article:modified_time" content="2020-06-27T12:23:42.910Z">
+<meta property="article:author" content="perJust">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://perjust.github.io/2020/06/27/vueComponent/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vueComponent | perJust_blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">perJust_blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/27/vueComponent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="perJust">
+      <meta itemprop="description" content="分享技术，记录成长">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="perJust_blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vueComponent
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-27 20:21:50 / 修改时间：20:23:42" itemprop="dateCreated datePublished" datetime="2020-06-27T20:21:50+08:00">2020-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/" itemprop="url" rel="index"><span itemprop="name">很早前写的</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue/component/" itemprop="url" rel="index"><span itemprop="name">component</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>vue 组件化初学时的笔记</p>
+<a id="more"></a>
+
+<blockquote>
+<p>1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;com&gt;&lt;&#x2F;com&gt; &lt;!-- 只能写在vue实例对象内 --&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;全局组件 也只能写在绑定的实例中</span><br><span class="line">        Vue.component(&#39;com&#39;,&#123;    &#x2F;&#x2F;自定义组件名   不要大写</span><br><span class="line">            template:&#96;</span><br><span class="line">               &lt;div style&#x3D;&quot;color:#f40&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;div&gt;     </span><br><span class="line">                &#96;,      &#x2F;&#x2F;style是&#39;&#x3D;&#39;  不是&#39;:&#39;</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123; </span><br><span class="line">                    message:&#39;component&#39;    &#x2F;&#x2F;以此为准</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        var app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                message:&#39;hello&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;) </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>2</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;comb use&#x3D;&quot;temp1&quot;&gt;&lt;&#x2F;comb&gt;</span><br><span class="line">        &lt;comc&gt;&lt;&#x2F;comc&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">        var comOut &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">            &lt;p style&#x3D;&quot;color:#f0f0f0&quot;&gt;&#123;&#123;tem2&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &#96;,</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    tem2 : &#39;template2&#39;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;局部组件</span><br><span class="line">        var app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                message:&#39;hello&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#x2F;&#x2F; props:[&quot;use&quot;],</span><br><span class="line">            components:&#123;</span><br><span class="line">                &quot;comb&quot;:&#123;</span><br><span class="line">                    template:&#96;</span><br><span class="line">                    &lt;p style&#x3D;&quot;color:#666&quot;&gt;&#123;&#123;use&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">                    &#96;,</span><br><span class="line">                    props:[&quot;use&quot;],</span><br><span class="line">                    data()&#123;</span><br><span class="line">                        return &#123;</span><br><span class="line">                            tem1 : &#39;template1&#39;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;comc&quot;:comOut</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;) </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>3</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;comb :use&#x3D;&quot;temp1&quot;&gt;&lt;&#x2F;comb&gt; &lt;!-- 区别temp1是组件内部data绑定的还是整个实例绑定的，明显是实例中data绑定的，（相当于对一个标签进行属性值绑定） --&gt;</span><br><span class="line">        &lt;comc :com&#x3D;&quot;sel&quot;&gt;&lt;&#x2F;comc&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">        var comOut &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">            &lt;p style&#x3D;&quot;color:#f0f0f0&quot;&gt;&#123;&#123;com&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &#96;,</span><br><span class="line">            props:[&quot;com&quot;],</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    sel : &#39;this in select&#39; &#x2F;&#x2F;data里只是针对组件内的绑定</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;局部组件</span><br><span class="line">        var app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                message:&#39;hello&#39;,</span><br><span class="line">                sel:&#39;this out select&#39;,</span><br><span class="line">                temp1:&#39;out data&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#x2F;&#x2F; props:[&quot;use&quot;],</span><br><span class="line">            components:&#123;</span><br><span class="line">                &quot;comb&quot;:&#123;</span><br><span class="line">                    template:&#96;</span><br><span class="line">                    &lt;p style&#x3D;&quot;color:#666&quot;&gt;&#123;&#123;use&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">                    &#96;,</span><br><span class="line">                    props:[&quot;use&quot;],  &#x2F;&#x2F;props为何写在内部，逻辑很简单，就是标签内定义的属性传入组件内进行操作</span><br><span class="line">                    data()&#123;</span><br><span class="line">                        return &#123;</span><br><span class="line">                            temp1 : &#39; in template1&#39; &#x2F;&#x2F;data里只是针对组件内的绑定</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;comc&quot;:comOut    &#x2F;&#x2F;组建名是字符串形式</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;) </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>4</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;parents&gt;&lt;&#x2F;parents&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;父子组件</span><br><span class="line">        var chr &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">                &lt;p :style&#x3D;&quot;&#123;color:&#39;#f40&#39;,fontSize:fontsize&#125;&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &#96;,</span><br><span class="line">            props:[&quot;fontsize&quot;],</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    message:&#39;this child&#39;,</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        var par &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">                &lt;children :fontsize&#x3D;&quot;fsize&quot;&gt;&lt;&#x2F;children&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &#96;,</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    message:&#39;hello ch&#39;,</span><br><span class="line">                    fsize:&#39;30px&#39;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            components:&#123;</span><br><span class="line">                &quot;children&quot;:chr</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F; var chr &#x3D; &#123;                &#x2F;&#x2F;写在后面  error   因为顺序问题   变量提升但是等号后的没提升</span><br><span class="line">        &#x2F;&#x2F;     template:&#96;</span><br><span class="line">        &#x2F;&#x2F;         &lt;p style&#x3D;&quot;color:#f40&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">        &#x2F;&#x2F;     &#96;,</span><br><span class="line">        &#x2F;&#x2F;     data()&#123;</span><br><span class="line">        &#x2F;&#x2F;         return &#123;</span><br><span class="line">        &#x2F;&#x2F;             message:&#39;this child&#39;</span><br><span class="line">        &#x2F;&#x2F;         &#125;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">        var app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                message:&#39;hello&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">            components:&#123;</span><br><span class="line">                &quot;parents&quot;:par</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;) </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>5</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &lt;component is&#x3D;&quot;component1&quot;&gt;&lt;&#x2F;component&gt;</span><br><span class="line">        &lt;component :is&#x3D;&quot;component2&quot;&gt;&lt;&#x2F;component&gt;</span><br><span class="line">        &lt;component :is&#x3D;&quot;component3&quot;&gt;&lt;&#x2F;component&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;组件选择</span><br><span class="line">        var com1 &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">                &lt;h1 style&#x3D;&quot;color:#f40&quot;&gt;未绑定属性前提下，直接选择component1&lt;&#x2F;h1&gt;</span><br><span class="line">            &#96;</span><br><span class="line">        &#125;,</span><br><span class="line">        com2 &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">                &lt;h2 style&#x3D;&quot;color:#666&quot;&gt;绑定属性前提下，选择自定义标签为comp2的&lt;&#x2F;h2&gt;</span><br><span class="line">            &#96;</span><br><span class="line">        &#125;,</span><br><span class="line">        com3 &#x3D; &#123;</span><br><span class="line">            template:&#96;</span><br><span class="line">                &lt;h3 style&#x3D;&quot;color:#ccc&quot;&gt;绑定属性前提下，选择自定义标签为comp3的&lt;&#x2F;h2&gt;</span><br><span class="line">            &#96;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        var app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                component2:&quot;comp2&quot;,   &#x2F;&#x2F;绑定的属性，所赋予的变量当然是data定义的</span><br><span class="line">                component3:&quot;comp3&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            components:&#123;</span><br><span class="line">                &quot;component1&quot;:com1,</span><br><span class="line">                &quot;comp2&quot;:com2,   &#x2F;&#x2F;自定义标签名是&lt;comp2&gt;&lt;&#x2F;comp2&gt;</span><br><span class="line">                &quot;comp3&quot;:com3    &#x2F;&#x2F;自定义标签名是&lt;comp3&gt;&lt;&#x2F;comp3&gt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;) </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="实际项目有些-HTML-元素，诸如-lt-ul-gt-、-lt-ol-gt-、-lt-table-gt-和-lt-select-gt-中动态组件-一般用正常标签形式如-lt-li-is-39-39-gt"><a href="#实际项目有些-HTML-元素，诸如-lt-ul-gt-、-lt-ol-gt-、-lt-table-gt-和-lt-select-gt-中动态组件-一般用正常标签形式如-lt-li-is-39-39-gt" class="headerlink" title="实际项目有些 HTML 元素，诸如&lt;ul&gt;、&lt;ol&gt;、&lt;table&gt; 和 &lt;select&gt;中动态组件 一般用正常标签形式如&lt;li :is=&#39;&#39; /&gt;"></a>实际项目有些 HTML 元素，诸如<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>、<code>&lt;table&gt;</code> 和 <code>&lt;select&gt;</code>中动态组件 一般用正常标签形式如<code>&lt;li :is=&#39;&#39; /&gt;</code></h6><h6 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://cn.vuejs.org/v2/guide/components.html#%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6" target="_blank" rel="noopener">官方文档</a></h6><blockquote>
+<p>6  可以通过绑定元素来挂载template</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">       &lt;self&gt;&lt;&#x2F;self&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;   </span><br><span class="line"></span><br><span class="line">       &lt;template id&#x3D;&quot;tep&quot;&gt;</span><br><span class="line">           &lt;div&gt;    &lt;!-- template内需要有一个大容器包裹住 --&gt;</span><br><span class="line">               &lt;p&gt;姓名:&lt;&#x2F;p&gt;</span><br><span class="line">               &lt;p&gt;性别:&lt;&#x2F;p&gt;</span><br><span class="line">               &lt;p&gt;爱好:&lt;&#x2F;p&gt;</span><br><span class="line">           &lt;&#x2F;div&gt; </span><br><span class="line">       &lt;&#x2F;template&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       const Self &#x3D; &#123;</span><br><span class="line">           template:&#39;#tep&#39;</span><br><span class="line">       &#125;</span><br><span class="line">       const app &#x3D; new Vue(&#123;</span><br><span class="line">           el:&#39;#app&#39;,</span><br><span class="line">           data:&#123;</span><br><span class="line">               getData:&#123;</span><br><span class="line">                   name : &#39;admin&#39;,</span><br><span class="line">                   sex : &#39;man&#39;,</span><br><span class="line">                   like : &#39;like&#39;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           components:&#123;</span><br><span class="line">               &quot;self&quot;:Self</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/vue%E5%B0%8F%E7%AC%94%E8%AE%B0/" rel="prev" title="vue小笔记">
+      <i class="fa fa-chevron-left"></i> vue小笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/vuex/" rel="next" title="vuex">
+      vuex <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#实际项目有些-HTML-元素，诸如-lt-ul-gt-、-lt-ol-gt-、-lt-table-gt-和-lt-select-gt-中动态组件-一般用正常标签形式如-lt-li-is-39-39-gt"><span class="nav-number">1.</span> <span class="nav-text">实际项目有些 HTML 元素，诸如&lt;ul&gt;、&lt;ol&gt;、&lt;table&gt; 和 &lt;select&gt;中动态组件 一般用正常标签形式如&lt;li :is&#x3D;&#39;&#39; &#x2F;&gt;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="perJust"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">perJust</p>
+  <div class="site-description" itemprop="description">分享技术，记录成长</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/perJust" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;perJust" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">perJust</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">79k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:12</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

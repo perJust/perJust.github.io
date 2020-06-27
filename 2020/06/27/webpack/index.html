@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"perjust.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="ajax的简单说明">
+  <meta name="description" content="webpack的部分笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ajax">
-<meta property="og:url" content="https://perjust.github.io/2020/06/26/ajax/index.html">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="https://perjust.github.io/2020/06/27/webpack/index.html">
 <meta property="og:site_name" content="perJust_blog">
-<meta property="og:description" content="ajax的简单说明">
+<meta property="og:description" content="webpack的部分笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-26T13:17:05.187Z">
-<meta property="article:modified_time" content="2020-06-27T09:39:15.012Z">
+<meta property="article:published_time" content="2020-06-27T11:45:11.830Z">
+<meta property="article:modified_time" content="2020-06-27T12:23:11.068Z">
 <meta property="article:author" content="perJust">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://perjust.github.io/2020/06/26/ajax/">
+<link rel="canonical" href="https://perjust.github.io/2020/06/27/webpack/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>ajax | perJust_blog</title>
+  <title>webpack | perJust_blog</title>
   
 
 
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/26/ajax/">
+    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/27/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -168,7 +168,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ajax
+          webpack
         </h1>
 
         <div class="post-meta">
@@ -177,16 +177,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-06-26 21:17:05" itemprop="dateCreated datePublished" datetime="2020-06-26T21:17:05+08:00">2020-06-26</time>
+              <time title="创建时间：2020-06-27 19:45:11 / 修改时间：20:23:11" itemprop="dateCreated datePublished" datetime="2020-06-27T19:45:11+08:00">2020-06-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-27 17:39:15" itemprop="dateModified" datetime="2020-06-27T17:39:15+08:00">2020-06-27</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -197,7 +191,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/ajax/" itemprop="url" rel="index"><span itemprop="name">ajax</span></a>
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
                 </span>
             </span>
 
@@ -207,7 +201,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>401</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -226,36 +220,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ajax的简单说明</p>
+        <p>webpack的部分笔记</p>
 <a id="more"></a>
 
-<blockquote>
-<p>ajax实现聊天实时请求<br>** <a href="https://m.jb51.net/show/88954" target="_blank" rel="noopener">参考而已</a> **</p>
-</blockquote>
+<ol>
+<li>webpack相当于将资源以对象形式存储起来，然后进行打包；</li>
+<li><code>bundle[hash:8].js</code> hash:8表示随机产生8位的hash</li>
+<li><code>use:[style-loader, css-loader]</code> ==执行顺序是自右向左，自下而上==，这里的先执行<code>css-loader</code>[表示++解析css模块++],再执行<code>style-loader</code>[将css模块++穿插到style标签内++]</li>
+<li>不在<code>index.html</code>中直接写css模块，譬如：<code>&lt;link src=....</code>。因为webpack会把<code>index.html</code>当成一个模板，然后其他模块通过webpack穿插进去。别再想<code>src</code>里的相对路径，早已改变。</li>
+<li><code>eslint-loader</code>需要在<code>loader</code>第一个执行，可以在<code>options</code>选项里加<code>enforce: &#39;pre&#39;</code>。previous前置  post后置</li>
+<li></li>
+</ol>
 <hr>
-<blockquote>
-<p>设置post提交时，需要设置http头，setRequestHeader()</p>
-</blockquote>
-<ul>
-<li>xmlhttp.setRequestHeader(“Content-type”,”application/x-www-form-urlencoded”)</li>
+<h6 id="webpack的一些选项"><a href="#webpack的一些选项" class="headerlink" title="webpack的一些选项"></a>webpack的一些选项</h6><ol>
+<li>modules  : a)rules ：exclude,include,test,path b)<code>noParse：/jquery/</code>举例：不去解析jquery里的依赖关系 </li>
+<li>plugins</li>
+<li>externals : 指定的将不打包，<code>externals: {jquery:$}</code></li>
+<li><code>devtool</code> : 需配置，譬如：<code>devtool:&quot;source-map&quot;</code> 生产环境打包后浏览器点击错误来源  可进行具体查看</li>
+<li><code>watch:true</code> 实时监控</li>
+<li><code>watchOptions: {}</code> 实时监控配置选项 有<code>poll</code>、<code>aggregateTimeout</code>、<code>ignored</code>属性</li>
+<li>resolve选项 : <code>modules:[]</code>、<code>mainFields:[]</code>、<code>mainFiles:[]</code>与<code>alias:{}</code></li>
+<li>devServer选项 : 有proxy、port、open(Boolean 默认打开浏览器)、hot(boolean 热更新)</li>
+</ol>
+<hr>
+<h6 id="webpack的一些插件"><a href="#webpack的一些插件" class="headerlink" title="webpack的一些插件"></a>webpack的一些插件</h6><ul>
+<li>放在<code>plugins: []</code>内</li>
 </ul>
-<hr>
-<p><strong>跨域问题跟src有关</strong></p>
+<ol>
+<li><blockquote>
+<p>html-webpack-plugin </p>
 <blockquote>
-<p>script标签，可以解决跨域问题</p>
+<p>操作的：1.引用html模板，当index.html没有时，以已有的任意路径的html为模板.配置<code>template: &#39;./src/index.html&#39;</code>，产生的<code>filename: &#39;index.html&#39;</code>。2. 配置<code>minify</code>进行一些压缩操作。3. 配置<code>chunks:[]</code>选择代码块，譬如：多个js文件，选择性引入某各或某几个js。</p>
 </blockquote>
-<ul>
-<li>先定义某个取数据的函数</li>
-<li>然后创建script标签，设定src跨域地址，</li>
-<li>跨域的请求地址，要设定返回数据的标头 –&gt; callback= (函数名)</li>
-<li>返回数据的标头，要和预先设定好的函数函数名一样，</li>
-<li>这样就可以当加载完成时，里面相当于执行函数，传回来的数据就相当于传入的实参<blockquote>
-<p>jsonp解决跨域，就是利用script，</p>
 </blockquote>
 </li>
-<li>jquery里的jsonp方法进行跨域，就跟script标签解决跨域问题差不多，就是里面封装好了随机的callback，最后把收到的结果放到success里</li>
-</ul>
+<li><blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webpack-provide-plugin(&#123;</span><br><span class="line">  $: &#39;jquery&#39;   &#x2F;&#x2F;为每个模块引入$    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><code>clean-webpack-plugin</code>,<code>copy-webpack-plugin</code></li>
+<li>自带的插件<code>banner-plugin</code> 为打包的JS文件  首部加入注释  可以用来注明一些内容</li>
+<li>自带的插件<code>webpack.DefinePlugin</code> 定义环境变量</li>
+<li><code>webpack.IgnorePlugin</code> : 忽略加载某些模块</li>
+</ol>
 <hr>
+<h6 id="webpack一些loader"><a href="#webpack一些loader" class="headerlink" title="webpack一些loader"></a>webpack一些loader</h6><ol>
+<li><code>expose-loader</code> :暴露模块在全局中使用  如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">modules: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">    &#123;</span><br><span class="line">        test: require.resolve(&#39;jquery&#39;), &#x2F;&#x2F; 当匹配到引入&#39;jquery&#39;</span><br><span class="line">        use: &#39;expose-loader?$&#39; &#x2F;&#x2F; 使用&#39;expose-loader&#39;暴露在全局并注入&#39;$&#39;用法</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>file-loader</code> ： 处理JS里的src资源，譬如<code>img.src = &#39;./login.png&#39;</code></li>
+</ol>
+<hr>
+<h6 id="webpack一些功能"><a href="#webpack一些功能" class="headerlink" title="webpack一些功能"></a>webpack一些功能</h6><blockquote>
+<p>懒加载</p>
+<blockquote>
+<p>依靠jsonp动态加载资源。依靠<code>import</code>引入。实际原理就是将需要懒加载的模块，抽离成其他<code>.js</code>文件(格式为jsonp)，当需要加载时，再动态的去加载这个文件</p>
+</blockquote>
+</blockquote>
 
     </div>
 
@@ -270,10 +288,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/06/26/javascript%E7%AC%94%E8%AE%B0/" rel="next" title="javascript笔记">
-      javascript笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/27/vue-router/" rel="prev" title="vue-router">
+      <i class="fa fa-chevron-left"></i> vue-router
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/vue%E5%B0%8F%E7%AC%94%E8%AE%B0/" rel="next" title="vue小笔记">
+      vue小笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -333,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#webpack的一些选项"><span class="nav-number">1.</span> <span class="nav-text">webpack的一些选项</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#webpack的一些插件"><span class="nav-number">2.</span> <span class="nav-text">webpack的一些插件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#webpack一些loader"><span class="nav-number">3.</span> <span class="nav-text">webpack一些loader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#webpack一些功能"><span class="nav-number">4.</span> <span class="nav-text">webpack一些功能</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

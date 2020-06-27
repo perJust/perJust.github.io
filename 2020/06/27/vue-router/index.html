@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"perjust.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="vue-router简单说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-router">
+<meta property="og:url" content="https://perjust.github.io/2020/06/27/vue-router/index.html">
+<meta property="og:site_name" content="perJust_blog">
+<meta property="og:description" content="vue-router简单说明">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T11:39:29.132Z">
+<meta property="article:modified_time" content="2020-06-27T11:40:44.961Z">
+<meta property="article:author" content="perJust">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://perjust.github.io/2020/06/27/vue-router/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue-router | perJust_blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">perJust_blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/27/vue-router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="perJust">
+      <meta itemprop="description" content="分享技术，记录成长">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="perJust_blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue-router
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-27 19:39:29 / 修改时间：19:40:44" itemprop="dateCreated datePublished" datetime="2020-06-27T19:39:29+08:00">2020-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/" itemprop="url" rel="index"><span itemprop="name">很早前写的</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue/vue-router/" itemprop="url" rel="index"><span itemprop="name">vue-router</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>24k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>22 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>vue-router简单说明</p>
+<a id="more"></a>
+
+<blockquote>
+<p>引入新的vue文件,在路由的index.js中配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; &#x2F;&#x2F; 分配路由</span><br><span class="line">      path: &#39;&#x2F;p&#39;,</span><br><span class="line">      name: &#39;part1&#39;,</span><br><span class="line">      component: Part1</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后在核心的App.vue中 写好router结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;router-view&#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;router-view&gt;&lt;/router-view&gt;</code>就是将模板的内容挂载到这里</p>
+<hr>
+<blockquote>
+<p>子路由</p>
+</blockquote>
+<ol>
+<li>创建两个子路由文件.vue  并在父级路由文件加上<code>&lt;router-view&gt;&lt;/router-view&gt;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Part1.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;part&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure></li>
+<li>在核心的App.vue里添加Part1子路由的<code>&lt;router-link&gt;</code>,其实也可以在Part1.vue里进行添加(当进入Part1的模板才可以进一步操作查看其子路由文件)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;App.vue</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&#x2F;p12&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&#x2F;p13&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>配置子路由，注意在children内写path时，没有对子路由路径加’/‘<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; router&#x2F;index.js</span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; &#x2F;&#x2F; 分配路由</span><br><span class="line">      path: &#39;&#x2F;p&#39;,</span><br><span class="line">      name: &#39;part1&#39;,</span><br><span class="line">      component: Part1,</span><br><span class="line">      children: [</span><br><span class="line">        &#123; &#x2F;&#x2F; 这步可以不写吧  写了就相当于子页面也有父页面p的  导致p页面有两个</span><br><span class="line">          path: &#39;&#x2F;&#39;,</span><br><span class="line">          name: &#39;p&#39;,</span><br><span class="line">          component: Part1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123; &#x2F;&#x2F; 注意子页面的path,写的是直接子路径方式 而没有&#39;&#x2F;&#39; 注意配置to路由导向即可</span><br><span class="line">        &#x2F;&#x2F; 如果写成path:&#39;&#x2F;p12&#39;,则url上访问的是&#x2F;p12,不需要访问&#x2F;p&#x2F;p12 两级路径</span><br><span class="line">          path: &#39;p12&#39;,</span><br><span class="line">          name: &#39;p12&#39;,</span><br><span class="line">          component: Part12</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;p13&#39;,</span><br><span class="line">          name: &#39;p13&#39;,</span><br><span class="line">          component: Part13</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr>
+<h6 id="vue-router提供的传参"><a href="#vue-router提供的传参" class="headerlink" title="vue-router提供的传参"></a>vue-router提供的传参</h6><ol>
+<li>通过选项的name传递参数，但是只能传递name参数，实际应用中不常用<blockquote>
+<p>可以在核心app.vue里去显示当前路由后组件的name</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&#x2F;p12&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&#x2F;p13&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &#123;&#123;$route.name&#125;&#125; &lt;!-- 注意是&#39;$route&#39; 接收当前路由的name，譬如显示hello组件时，这里就是hello路由时设定的name --&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;router-view&#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>也可以在组件内去显示子组件当前的name</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;part&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;message&#125;&#125; - &#123;&#123;$route.name&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当要显示子组件的name时，父级要避免使用name,可以写在path’/‘(当前页面) </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123; &#x2F;&#x2F; 分配路由</span><br><span class="line">     path: &#39;&#x2F;p&#39;,</span><br><span class="line">     &#x2F;&#x2F; name: &#39;part1&#39;, &#x2F;&#x2F; 子级包含了 就在子级部署name</span><br><span class="line">     component: Part1,</span><br><span class="line">     children: [</span><br><span class="line">       &#123; &#x2F;&#x2F; 这步可以不写吧  写了就相当于子页面也有父页面p的  导致p页面有两个</span><br><span class="line">         path: &#39;&#x2F;&#39;,</span><br><span class="line">         name: &#39;p&#39;,</span><br><span class="line">         component: Part1</span><br><span class="line">       &#125;,</span><br><span class="line">       &#123; &#x2F;&#x2F; 注意子页面的path,写的是直接子路径方式 而没有&#39;&#x2F;&#39;</span><br><span class="line">         path: &#39;p12&#39;,</span><br><span class="line">         name: &#39;p12&#39;,</span><br><span class="line">         component: Part12</span><br><span class="line">       &#125;,</span><br><span class="line">       &#123;</span><br><span class="line">         path: &#39;p13&#39;,</span><br><span class="line">         name: &#39;p13&#39;,</span><br><span class="line">         component: Part13</span><br><span class="line">       &#125;</span><br><span class="line">     ]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>通过标签中的’to’传参<h6 id="标签中的’to’要用v-bind绑定"><a href="#标签中的’to’要用v-bind绑定" class="headerlink" title="标签中的’to’要用v-bind绑定"></a>标签中的’to’要用v-bind绑定</h6><h6 id="基本原理个人理解-’-to’中绑定’name’-然后路由的时候vue-router会在路由配置里找与之相同的’name’-进而完成路由"><a href="#基本原理个人理解-’-to’中绑定’name’-然后路由的时候vue-router会在路由配置里找与之相同的’name’-进而完成路由" class="headerlink" title="基本原理个人理解:’:to’中绑定’name’ 然后路由的时候vue-router会在路由配置里找与之相同的’name’ 进而完成路由"></a>基本原理个人理解:’:to’中绑定’name’ 然后路由的时候vue-router会在路由配置里找与之相同的’name’ 进而完成路由</h6><h6 id="注意’-to’绑定的写法是对象形式的字符串-“-”-传参可以通过params传参-只能使用’params’"><a href="#注意’-to’绑定的写法是对象形式的字符串-“-”-传参可以通过params传参-只能使用’params’" class="headerlink" title="注意’:to’绑定的写法是对象形式的字符串 “{ }” 传参可以通过params传参  只能使用’params’"></a>注意’:to’绑定的写法是对象形式的字符串 “{ }” 传参可以通过params传参  只能使用’params’</h6></li>
+</ol>
+<blockquote>
+<p>app.vue里写好’:to’</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link :to&#x3D;&quot;&#123;name:&#39;p12&#39;,params:&#123;username:&#39;l&#39;,id:1&#125;&#125;&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link :to&#x3D;&quot;&#123;name:&#39;p13&#39;,params:&#123;username:&#39;ll&#39;,id:123&#125;&#125;&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &#123;&#123;$route.name&#125;&#125; &lt;!-- 注意是&#39;$route&#39; 接收当前路由的name，譬如显示hello组件时，这里就是hello路由时设定的name --&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;router-view&#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对应的组件 进行接收</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;part&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;message&#125;&#125;-&#123;&#123;$route.params.username&#125;&#125;-&#123;&#123;$route.params.id&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意命名的’name’要与路由配置里的一致</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; &#x2F;&#x2F; 分配路由</span><br><span class="line">      path: &#39;&#x2F;p&#39;,</span><br><span class="line">      &#x2F;&#x2F; name: &#39;part1&#39;, &#x2F;&#x2F; 子级包含了 就在子级部署name</span><br><span class="line">      component: Part1,</span><br><span class="line">      children: [</span><br><span class="line">        &#123; &#x2F;&#x2F; 这步可以不写吧  写了就相当于子页面也有父页面p的  导致p页面有两个</span><br><span class="line">          path: &#39;&#x2F;&#39;,</span><br><span class="line">          name: &#39;p&#39;,</span><br><span class="line">          component: Part1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123; &#x2F;&#x2F; 注意子页面的path,写的是直接子路径方式 而没有&#39;&#x2F;&#39;</span><br><span class="line">          path: &#39;p12&#39;,</span><br><span class="line">          name: &#39;p12&#39;,</span><br><span class="line">          component: Part12</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;p13&#39;,</span><br><span class="line">          name: &#39;p13&#39;,</span><br><span class="line">          component: Part13</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="可在路由配置文件内传参"><a href="#可在路由配置文件内传参" class="headerlink" title="可在路由配置文件内传参"></a>可在路由配置文件内传参</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name:</span><br><span class="line">    path:</span><br><span class="line">    component:</span><br><span class="line">    meta:[&#39;传参1&#39;,&#39;传参2&#39;...]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>调用时也是<code>$route.meta[]</code>获取</p>
+</blockquote>
+<h5 id="mete也可传对象meta"><a href="#mete也可传对象meta" class="headerlink" title="mete也可传对象meta:{}"></a>mete也可传对象<code>meta:{}</code></h5><hr>
+<h6 id="单页面多路由区域"><a href="#单页面多路由区域" class="headerlink" title="单页面多路由区域"></a>单页面多路由区域</h6><ol>
+<li>单页面多路由的意思就是调控一个页面里存在多个<code>&lt;router-view&gt;&lt;/router-view&gt;</code>时 如何配置</li>
+<li>基本原理就是，在核心app.vue里写多个’router-view’,通过’name’命名(未命名’name’的，默认为default状态)</li>
+<li>路由配置时，将原本的’component:…’改为’components:{}’形式，注意加复数形式</li>
+<li>在<code>&lt;router-view&gt;</code>内可以写样式，最终样式会挂到<code>&lt;template&gt;</code>内所包含的大容器上<blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link :to&#x3D;&quot;&#123;name:&#39;p12&#39;,params:&#123;username:&#39;l&#39;,id:1&#125;&#125;&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link :to&#x3D;&quot;&#123;name:&#39;p13&#39;,params:&#123;username:&#39;ll&#39;,id:123&#125;&#125;&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &#123;&#123;$route.name&#125;&#125; &lt;!-- 注意是&#39;$route&#39; 接收当前路由的name，譬如显示hello组件时，这里就是hello路由时设定的name --&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;router-view&#x2F;&gt; &lt;!-- default 未命名&#39;name&#39; --&gt;</span><br><span class="line">    &lt;router-view name&#x3D;&quot;left&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#ccc;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">    &lt;router-view name&#x3D;&quot;right&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#666;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>路由配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part12, &#x2F;&#x2F; key值为router-view的name</span><br><span class="line">        right: Part13</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+由上可知，首页(‘/‘)时，由于有三个<code>&lt;router-view&gt;</code>且进行了分别的配置，可显示配置的三个组件<h6 id="可灵活通过路由显示组件"><a href="#可灵活通过路由显示组件" class="headerlink" title="可灵活通过路由显示组件"></a>可灵活通过路由显示组件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part12, &#x2F;&#x2F; key值为router-view的name</span><br><span class="line">        right: Part13</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">      path: &#39;&#x2F;re&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part13, &#x2F;&#x2F; key值为router-view的name</span><br><span class="line">        right: Part12</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+如上，当url进入’/re’时，原来’/‘时的左右组件交换了</li>
+</ol>
+<hr>
+<h6 id="vue-router通过url传参"><a href="#vue-router通过url传参" class="headerlink" title="vue-router通过url传参"></a>vue-router通过url传参</h6><ol>
+<li>基本原理就是，<code>&lt;router-link to=&#39;...&#39;&gt;</code>将需要传参的部署到url上,在路由配置里通过绑定变量来接收传到url上的参数</li>
+<li>注意:定义的传参结构，与路由的接收结构不能缺失，即路由绑定了变量，但没被传参或者传参为空，都将不能正确显示该路由组件</li>
+<li>路由配置接收传参时，可以通过正则判断传过来的是否符合要求(变量后加括号写正则)，不符合的话就不显示该路由配置的组件<blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;params&#x2F;125&#x2F;helloworld&quot;&gt;url 传参&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>路由配置 index.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">import Params from &#39;@&#x2F;components&#x2F;Params&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part12,</span><br><span class="line">        right: Part13</span><br><span class="line">      &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;params&#x2F;:newsId&#x2F;:newsMsg&#39;, &#x2F;&#x2F; 可通过正则限定url传参的值,如不规范则不显示下面绑定的组件</span><br><span class="line">      &#x2F;&#x2F; path: &#39;&#x2F;params&#x2F;:newsId(\\d+)&#x2F;:newsMsg&#39;, &#x2F;&#x2F; 正则限定传参过来的，newsId接收的需为数字</span><br><span class="line">      name: &#39;urlParams&#39;,</span><br><span class="line">      component: Params &#x2F;&#x2F; 当没有正常显示这块的组件时 其一：上面绑定newsId和newsMsg至少有一个无值，即url传参过来的不完全符合这边需要绑定的；其二：url传参过来的，不符合这边正则判断的；</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr>
+<h6 id="redirect重定向"><a href="#redirect重定向" class="headerlink" title="redirect重定向"></a>redirect重定向</h6><p>1.重定向的意思就是路由配置后重新指向某个已有的路由指向<br>2. 在路由配置文件内正常配置，只不过不用写component，因为指向了已有的路由配置，要加一条选项’redirect: …’后面接需要指向的已有的路由<br>3. 重定向也可以传参</p>
+<blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;params&#x2F;125&#x2F;helloworld&quot;&gt;url 传参&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;home&quot;&gt;goHome&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;router-link to&#x3D;&quot;&#x2F;reParams&#x2F;123&#x2F;This is redirect&quot;&gt;reParams&lt;&#x2F;router-link&gt;&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>路由配置 index.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">import Params from &#39;@&#x2F;components&#x2F;Params&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part12,</span><br><span class="line">        right: Part13</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;params&#x2F;:newsId&#x2F;:newsMsg&#39;, &#x2F;&#x2F; 可通过正则限定url传参的值,如不规范则不显示下面绑定的组件</span><br><span class="line">      &#x2F;&#x2F; path: &#39;&#x2F;params&#x2F;:newsId(\\d+)&#x2F;:newsMsg&#39;,</span><br><span class="line">      name: &#39;urlParams&#39;,</span><br><span class="line">      component: Params &#x2F;&#x2F; 当没有正常显示这块的组件时 其一：上面绑定newsId和newsMsg至少有一个无值，即url传参过来的不完全符合这边需要绑定的；其二：url传参过来的，不符合这边正则判断的；</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;home&#39;,</span><br><span class="line">      name: &#39;goHome&#39;,</span><br><span class="line">      redirect: &#39;&#x2F;&#39; &#x2F;&#x2F; 原路由定义的path 这里指向那里 并调用路由&#39;&#x2F;&#39;下的组件</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;reParams&#x2F;:newsId&#x2F;:newsMsg&#39;, &#x2F;&#x2F; url传参接收 结构类似</span><br><span class="line">      name: &#39;reParams&#39;,</span><br><span class="line">      redirect: &#39;&#x2F;params&#x2F;:newsId&#x2F;:newsMsg&#39; &#x2F;&#x2F; 原有定义的path 指向那里并调用其组件(传参入)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h6 id="alias别名"><a href="#alias别名" class="headerlink" title="alias别名"></a>alias别名</h6><ol>
+<li>基本原理就是相当于一个组件由多个路径管理；</li>
+<li>跟重定向很相似，但是重定向是将新路径指向原有路径且显示出来的路径没有新路径，显示url是原有路径；</li>
+<li>alias是将原有路径基础上，加一条alias选项，写好哪些路径也是指向这个路径下的组件且地址栏显示url新路径;<blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link :to&#x3D;&quot;&#123;name:&#39;p12&#39;,params:&#123;username:&#39;l&#39;,id:1&#125;&#125;&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link :to&#x3D;&quot;&#123;name:&#39;p13&#39;,params:&#123;username:&#39;ll&#39;,id:123&#125;&#125;&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;params&#x2F;125&#x2F;helloworld&quot;&gt;url 传参&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;home&quot;&gt;重定向返回Home&lt;&#x2F;router-link&gt; | &lt;!--redirect 不可保存路径(即不保存这里的&#39;&#x2F;home&#39;,显示的时重定向的路径) 路径:&#39;localhost:8080&#x2F;#&#x2F;&#39;--&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;home1&quot;&gt;别名返回home&lt;&#x2F;router-link&gt; | &lt;!--alias 可保存路径 路径:&#39;localhost:8080&#x2F;#&#x2F;home1&#39;--&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;reParams&#x2F;123&#x2F;This is redirect&quot;&gt;reParams&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;aliasParams&#x2F;456&#x2F;This is alias&quot;&gt;aliasParams&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p121&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt; | &#x2F;&#x2F; alias选项可用数组接收多个别名路径</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p122&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p123&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>路由配置 index.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Part1 from &#39;@&#x2F;components&#x2F;Part1&#39; &#x2F;&#x2F; 引入对应的vue文件</span><br><span class="line">import Part12 from &#39;@&#x2F;components&#x2F;Part12&#39;</span><br><span class="line">import Part13 from &#39;@&#x2F;components&#x2F;Part13&#39;</span><br><span class="line">import Params from &#39;@&#x2F;components&#x2F;Params&#39;</span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      components: &#123;</span><br><span class="line">        default: HelloWorld,</span><br><span class="line">        left: Part12,</span><br><span class="line">        right: Part13</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; &#x2F;&#x2F; 分配路由</span><br><span class="line">      path: &#39;&#x2F;p&#39;,</span><br><span class="line">      &#x2F;&#x2F; name: &#39;part1&#39;, &#x2F;&#x2F; 子级包含了 就在子级部署name</span><br><span class="line">      component: Part1,</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;&#x2F;&#39;, &#x2F;&#x2F; &#39;&#x2F;&#39;的意思是在当前路径下  当前路径就是父级默认路径&#39;&#x2F;p&#39;</span><br><span class="line">          name: &#39;p&#39;,</span><br><span class="line">          alias: &#39;&#x2F;home1&#39;, &#x2F;&#x2F; 别名 相当于path管理了两个路径 &#39;&#x2F;p&#39;与&#39;&#x2F;home1&#39;</span><br><span class="line">          component: Part1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;p12&#39;,</span><br><span class="line">          name: &#39;p12&#39;,</span><br><span class="line">          alias: [&#39;&#x2F;p121&#39;, &#39;&#x2F;p122&#39;, &#39;&#x2F;p123&#39;], &#x2F;&#x2F; 别名可以多个(用数组管理) 相当于一个组件由多个路径管理</span><br><span class="line">          component: Part12</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;p13&#39;,</span><br><span class="line">          name: &#39;p13&#39;,</span><br><span class="line">          component: Part13</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;params&#x2F;:newsId&#x2F;:newsMsg&#39;, &#x2F;&#x2F; 可通过正则限定url传参的值,如不规范则不显示下面绑定的组件</span><br><span class="line">      &#x2F;&#x2F; path: &#39;&#x2F;params&#x2F;:newsId(\\d+)&#x2F;:newsMsg&#39;,</span><br><span class="line">      name: &#39;urlParams&#39;,</span><br><span class="line">      alias: &#39;&#x2F;aliasParams&#x2F;:newsId&#x2F;:newsMsg&#39;, &#x2F;&#x2F; 别名也可以传参 就相当于一个组建的path管理了两个路径</span><br><span class="line">      component: Params</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;home&#39;,</span><br><span class="line">      name: &#39;goHome&#39;,</span><br><span class="line">      redirect: &#39;&#x2F;&#39; &#x2F;&#x2F; 原路由定义的path 这里指向那里 并调用路由&#39;&#x2F;&#39;下的组件</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;reParams&#x2F;:newsId&#x2F;:newsMsg&#39;,</span><br><span class="line">      name: &#39;reParams&#39;,</span><br><span class="line">      redirect: &#39;&#x2F;params&#x2F;:newsId&#x2F;:newsMsg&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>路由的过渡动画</p>
+</blockquote>
+<ol>
+<li>基本原理就是在<code>&lt;router-view&gt;</code>外包裹<code>&lt;transtion&gt;</code>；</li>
+<li>transition的name必须要填，css<br>处理是根据其name操作；</li>
+<li>当处理多个router-view时，可以采用<code>&lt;transition-group&gt;</code>同样要写name，注意：其包裹的子节点必须绑定唯一的key;<blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    &lt;transition name&#x3D;&quot;fade&quot; mode&#x3D;&quot;out-in&quot;&gt; &lt;!-- name里面不是固定的 只要和下面css对应即可 --&gt; &lt;!-- 两种mode in-out out-in --&gt;</span><br><span class="line">      &lt;router-view&#x2F;&gt; &lt;!-- default 未命名&#39;name&#39; --&gt;</span><br><span class="line">    &lt;&#x2F;transition&gt;</span><br><span class="line">    &lt;transition-group name&#x3D;&quot;fade1&quot; mode&#x3D;&quot;out-in&quot;&gt;</span><br><span class="line">      &lt;router-view name&#x3D;&quot;left&quot; key&#x3D;&quot;view1&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#ccc;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">      &lt;router-view name&#x3D;&quot;right&quot; key&#x3D;&quot;view2&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#666;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">    &lt;&#x2F;transition-group&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;App&#39;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: &quot;Avenir&quot;, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">.fade-enter &#123; &#x2F;&#x2F; 也就四步 前面&#39;.fade&#39;与name有关</span><br><span class="line">  opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.fade-leave &#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br><span class="line">.fade-enter-active &#123;</span><br><span class="line">  transition: opacity 1s;</span><br><span class="line">  -moz-transition: opacity 1s;</span><br><span class="line">  -o-transition: opacity 1s;</span><br><span class="line">&#125;</span><br><span class="line">.fade-leave-active &#123;</span><br><span class="line">  opacity: 0;</span><br><span class="line">  transition: opacity 1s;</span><br><span class="line">  -moz-transition: opacity 1s;</span><br><span class="line">  -o-transition: opacity 1s;</span><br><span class="line">&#125;</span><br><span class="line">.fade1-enter &#123;</span><br><span class="line">  opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.fade1-leave &#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br><span class="line">.fade1-enter-active &#123;</span><br><span class="line">  transition: opacity 1s;</span><br><span class="line">  -moz-transition: opacity 1s;</span><br><span class="line">  -o-transition: opacity 1s;</span><br><span class="line">&#125;</span><br><span class="line">.fade1-leave-active &#123;</span><br><span class="line">  opacity: 0;</span><br><span class="line">  transition: opacity 1s;</span><br><span class="line">  -moz-transition: opacity 1s;</span><br><span class="line">  -o-transition: opacity 1s;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h6 id="路由的mode设置和404处理"><a href="#路由的mode设置和404处理" class="headerlink" title="路由的mode设置和404处理"></a>路由的mode设置和404处理</h6><ol>
+<li>路由的mode设置，即设置默认url的’/#/‘是否消去；</li>
+<li>404的处理就是利用路由配置，处理未做处理的路由进行统一404处理<blockquote>
+<p>app.vue 模拟404</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to&#x3D;&quot;&#x2F;asdsafsfsaf123&quot;&gt;模拟404错误&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>路由配置 index.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Router from &#39;vue-router&#39;</span><br><span class="line">import HelloWorld from &#39;@&#x2F;components&#x2F;HelloWorld&#39;</span><br><span class="line">import Error from &#39;@&#x2F;components&#x2F;Error&#39;</span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  mode: &#39;history&#39;, &#x2F;&#x2F; 去除url默认的&#39;&#x2F;#&#x2F;&#39;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;&#39;,</span><br><span class="line">      name: &#39;HelloWorld&#39;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;*&#39;, &#x2F;&#x2F; 404处理</span><br><span class="line">      component: Error</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="路由的钩子函数"><a href="#路由的钩子函数" class="headerlink" title="路由的钩子函数"></a>路由的钩子函数</h5><h6 id="局部某个组件的路由钩子函数"><a href="#局部某个组件的路由钩子函数" class="headerlink" title="局部某个组件的路由钩子函数"></a>局部某个组件的路由钩子函数</h6></li>
+<li>路由配置中，只有一个钩子函数<code>beforeEnter: function (){}</code>;</li>
+<li>在模板中有两个钩子函数可以用<code>beforeRouteEnter: function (){}</code>与<code>beforeRouteLeave: function (){}</code>;</li>
+<li>注意在写钩子函数时，不要在核心app.vue里写(因为没作用，所有组件都在里面包含着，没有enter和leave);</li>
+<li>形参三个都要写，因为最后一个形参必须要调用next()才可以正常显示组件；<blockquote>
+<p>路由配置 index.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;p13&#39;,</span><br><span class="line">          name: &#39;p13&#39;,</span><br><span class="line">          component: Part13,</span><br><span class="line">          beforeEnter (to, from, next) &#123;</span><br><span class="line">            next()</span><br><span class="line">          &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>模板里</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;Part13&#39;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &#39;this is part13&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteEnter (to, from, next) &#123;</span><br><span class="line">    &#x2F;&#x2F; to --&gt; 即将路由过去的，目的组件</span><br><span class="line">    &#x2F;&#x2F; from --&gt; 来自哪个组件，即目前在哪个组件</span><br><span class="line">    &#x2F;&#x2F; 意思就是从这个组件到另个组件</span><br><span class="line">    &#x2F;&#x2F; next是个执行的函数，进入beforeRouteEnter里时必须调用next()，不然组件不会正常显示</span><br><span class="line">    console.log(to)</span><br><span class="line">    console.log(from)</span><br><span class="line">    &#x2F;&#x2F; to.params.username &#x3D; from.params.username &#x2F;&#x2F; ok 证明可以传参</span><br><span class="line">    &#x2F;&#x2F; next(&#123;path: &#39;&#x2F;p&#x2F;p12&#39;&#125;) &#x2F;&#x2F; 指向路径</span><br><span class="line">    next()</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteLeave (to, from, next) &#123;</span><br><span class="line">    &#x2F;&#x2F; 与上同理</span><br><span class="line">    console.log(&#39;beforeLeave:&#39;, to)</span><br><span class="line">    console.log(&#39;beforeLeave:&#39;, from)</span><br><span class="line">    next()</span><br><span class="line">  &#125; &#x2F;&#x2F; 还有下面这种</span><br><span class="line">  &#x2F;&#x2F; beforeRouteUpdate (to, from, next) &#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可参考<a href="https://blog.csdn.net/HeliumLau/article/details/61649491" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<h6 id="全局的钩子函数"><a href="#全局的钩子函数" class="headerlink" title="全局的钩子函数"></a>全局的钩子函数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new VueRouter(&#123; &#x2F;&#x2F; 这种写法就相当于script引入的 直接调用构造函数VueRouter进行实例，import引入应该也要这样命名</span><br><span class="line">    routes</span><br><span class="line">&#125;)</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt;&#123;</span><br><span class="line">    &#x2F;&#x2F; 全局上的钩子函数</span><br><span class="line">    &#x2F;&#x2F; 任何调用路由时 都要触发</span><br><span class="line">    &#x2F;&#x2F; to， from， next含义与局部含义一样</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h5 id="编程式导航-也就是网页的前进和后退"><a href="#编程式导航-也就是网页的前进和后退" class="headerlink" title="编程式导航 也就是网页的前进和后退"></a>编程式导航 也就是网页的前进和后退</h5><blockquote>
+<p>app.vue</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src&#x3D;&quot;.&#x2F;assets&#x2F;logo.png&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;首页&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p&quot;&gt;p页&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link :to&#x3D;&quot;&#123;name:&#39;p12&#39;,params:&#123;username:&#39;l&#39;,id:1&#125;&#125;&quot;&gt;p页-子页1&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link :to&#x3D;&quot;&#123;name:&#39;p13&#39;,params:&#123;username:&#39;ll&#39;,id:123&#125;&#125;&quot;&gt;p页-子页2&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;params&#x2F;125&#x2F;helloworld&quot;&gt;url 传参&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;home&quot;&gt;重定向返回Home&lt;&#x2F;router-link&gt; | &lt;!--redirect 不可保存路径(即不保存这里的&#39;&#x2F;home&#39;,显示的时重定向的路径) 路径:&#39;localhost:8080&#x2F;#&#x2F;&#39;--&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;home1&quot;&gt;别名返回home&lt;&#x2F;router-link&gt; | &lt;!--alias 可保存路径 路径:&#39;localhost:8080&#x2F;#&#x2F;home1&#39;--&gt;</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;reParams&#x2F;123&#x2F;This is redirect&quot;&gt;reParams&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;aliasParams&#x2F;456&#x2F;This is alias&quot;&gt;aliasParams&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p121&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p122&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;p123&quot;&gt;别名指向Part12&lt;&#x2F;router-link&gt; |</span><br><span class="line">      &lt;router-link to&#x3D;&quot;&#x2F;asdsafsfsaf123&quot;&gt;模拟404错误&lt;&#x2F;router-link&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;forward()&quot;&gt;前进&lt;&#x2F;button&gt;||</span><br><span class="line">        &lt;button @click&#x3D;&quot;back()&quot;&gt;后退&lt;&#x2F;button&gt;</span><br><span class="line">      &lt;&#x2F;p&gt;</span><br><span class="line">      &lt;br&gt;</span><br><span class="line">      &#123;&#123;$route.name&#125;&#125; &lt;!-- 注意是&#39;$route&#39; 接收当前路由的name，譬如显示hello组件时，这里就是hello路由时设定的name --&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;transition name&#x3D;&quot;fade&quot; mode&#x3D;&quot;out-in&quot;&gt; &lt;!-- name里面不是固定的 只要和下面css对应即可 --&gt; &lt;!-- 两种mode in-out out-in --&gt;</span><br><span class="line">      &lt;router-view&#x2F;&gt; &lt;!-- default 未命名&#39;name&#39; --&gt;</span><br><span class="line">    &lt;&#x2F;transition&gt;</span><br><span class="line">    &lt;transition-group name&#x3D;&quot;fade1&quot; mode&#x3D;&quot;out-in&quot;&gt;</span><br><span class="line">      &lt;router-view name&#x3D;&quot;left&quot; key&#x3D;&quot;view1&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#ccc;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">      &lt;router-view name&#x3D;&quot;right&quot; key&#x3D;&quot;view2&quot; style&#x3D;&quot;width:50%;height:200px;float:left;background-color:#666;&quot;&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">    &lt;&#x2F;transition-group&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;App&#39;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    forward () &#123;</span><br><span class="line">      this.$router.go(1) &#x2F;&#x2F; 注意是&#39;$router&#39;  传参时用的时&#39;$route&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    back () &#123;</span><br><span class="line">      this.$router.go(-1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="this-router-push-与-this-router-replace-都可以实现页面跳转，区别在于：前者会在history栈里添加记录"><a href="#this-router-push-与-this-router-replace-都可以实现页面跳转，区别在于：前者会在history栈里添加记录" class="headerlink" title="this.$router.push() 与 this.$router.replace()都可以实现页面跳转，区别在于：前者会在history栈里添加记录"></a>this.$router.push() 与 this.$router.replace()都可以实现页面跳转，区别在于：前者会在history栈里添加记录</h6><hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" rel="prev" title="前端知识收藏">
+      <i class="fa fa-chevron-left"></i> 前端知识收藏
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/webpack/" rel="next" title="webpack">
+      webpack <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#vue-router提供的传参"><span class="nav-number">1.</span> <span class="nav-text">vue-router提供的传参</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#标签中的’to’要用v-bind绑定"><span class="nav-number">2.</span> <span class="nav-text">标签中的’to’要用v-bind绑定</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#基本原理个人理解-’-to’中绑定’name’-然后路由的时候vue-router会在路由配置里找与之相同的’name’-进而完成路由"><span class="nav-number">3.</span> <span class="nav-text">基本原理个人理解:’:to’中绑定’name’ 然后路由的时候vue-router会在路由配置里找与之相同的’name’ 进而完成路由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意’-to’绑定的写法是对象形式的字符串-“-”-传参可以通过params传参-只能使用’params’"><span class="nav-number">4.</span> <span class="nav-text">注意’:to’绑定的写法是对象形式的字符串 “{ }” 传参可以通过params传参  只能使用’params’</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可在路由配置文件内传参"><span class="nav-number"></span> <span class="nav-text">可在路由配置文件内传参</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mete也可传对象meta"><span class="nav-number"></span> <span class="nav-text">mete也可传对象meta:{}</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单页面多路由区域"><span class="nav-number">1.</span> <span class="nav-text">单页面多路由区域</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#可灵活通过路由显示组件"><span class="nav-number">2.</span> <span class="nav-text">可灵活通过路由显示组件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#vue-router通过url传参"><span class="nav-number">3.</span> <span class="nav-text">vue-router通过url传参</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#redirect重定向"><span class="nav-number">4.</span> <span class="nav-text">redirect重定向</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#alias别名"><span class="nav-number">5.</span> <span class="nav-text">alias别名</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#路由的mode设置和404处理"><span class="nav-number">6.</span> <span class="nav-text">路由的mode设置和404处理</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#路由的钩子函数"><span class="nav-number"></span> <span class="nav-text">路由的钩子函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#局部某个组件的路由钩子函数"><span class="nav-number">1.</span> <span class="nav-text">局部某个组件的路由钩子函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#全局的钩子函数"><span class="nav-number">2.</span> <span class="nav-text">全局的钩子函数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编程式导航-也就是网页的前进和后退"><span class="nav-number"></span> <span class="nav-text">编程式导航 也就是网页的前进和后退</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#this-router-push-与-this-router-replace-都可以实现页面跳转，区别在于：前者会在history栈里添加记录"><span class="nav-number">1.</span> <span class="nav-text">this.$router.push() 与 this.$router.replace()都可以实现页面跳转，区别在于：前者会在history栈里添加记录</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="perJust"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">perJust</p>
+  <div class="site-description" itemprop="description">分享技术，记录成长</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/perJust" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;perJust" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">perJust</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">79k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:12</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

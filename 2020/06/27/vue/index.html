@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"perjust.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="vue的简单说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue">
+<meta property="og:url" content="https://perjust.github.io/2020/06/27/vue/index.html">
+<meta property="og:site_name" content="perJust_blog">
+<meta property="og:description" content="vue的简单说明">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T13:17:43.745Z">
+<meta property="article:modified_time" content="2020-06-27T13:18:34.431Z">
+<meta property="article:author" content="perJust">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://perjust.github.io/2020/06/27/vue/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue | perJust_blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">perJust_blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://perjust.github.io/2020/06/27/vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="perJust">
+      <meta itemprop="description" content="分享技术，记录成长">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="perJust_blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-27 21:17:43 / 修改时间：21:18:34" itemprop="dateCreated datePublished" datetime="2020-06-27T21:17:43+08:00">2020-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/" itemprop="url" rel="index"><span itemprop="name">很早前写的</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%88%E6%97%A9%E5%89%8D%E5%86%99%E7%9A%84/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>vue的简单说明</p>
+<a id="more"></a>
+
+<blockquote>
+<p>directive自定义指令</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(&#39;selfd&#39;,function (el,binding)&#123;   &#x2F;&#x2F;自定义属性名避开大写  不然会报错Failed to resolve directive </span><br><span class="line">            el.style[&quot;background-color&quot;] &#x3D; binding.value; &#x2F;&#x2F;注意这里的写法是background-color</span><br><span class="line">            &#x2F;&#x2F; console.log(el.style,el,binding.value)      </span><br><span class="line">        &#125;)</span><br><span class="line">        &#x2F;&#x2F;需写在new实例之前</span><br><span class="line">        </span><br><span class="line">        const app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                divBgc:&#39;#ccc&#39;,</span><br><span class="line">                left:&#39;0px&#39;,</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                add()&#123;</span><br><span class="line">                    this.left &#x3D; parseInt(this.left) + 20 + &#39;px&#39;;</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Vue.extend实例扩展构造器</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;selflabel&gt;&lt;&#x2F;selflabel&gt;   &lt;!-- 1 类似于组件 --&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;      &lt;!-- 2 一般用这种 --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const self &#x3D; Vue.extend(&#123;</span><br><span class="line">            &#x2F;&#x2F; template:&quot;&lt;h1&gt;&quot; + count + &quot;&lt;&#x2F;h1&gt;&quot;, error</span><br><span class="line">            </span><br><span class="line">            &#x2F;&#x2F; template:&quot;&lt;h1&gt;&quot; + &quot;&#123;&#123;count&#125;&#125;&quot; + &quot;&lt;&#x2F;h1&gt;&quot;,&#x2F;&#x2F;ok</span><br><span class="line">            template:&quot;&lt;h1&gt;&#123;&#123;count&#125;&#125;&lt;&#x2F;h1&gt;&quot;,</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    count:1,</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;然后绑定到钩子函数上</span><br><span class="line">    &#x2F;&#x2F;    new self.$mount(&#39;selflabel&#39;); error</span><br><span class="line">       new self().$mount(&#39;selflabel&#39;);  &#x2F;&#x2F;1</span><br><span class="line">       new self().$mount(&#39;#app&#39;);       &#x2F;&#x2F;2</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"><a href="#注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；" class="headerlink" title="注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"></a>注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；</h6><hr>
+<blockquote>
+<p>Vue.set全局操作</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &#123;&#123;num&#125;&#125;</span><br><span class="line">        &lt;button @click&#x3D;&quot;add()&quot;&gt;内部加&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;inNum()&quot;&gt;内部响应数组&lt;&#x2F;button&gt;</span><br><span class="line">        &#123;&#123;arr[0]&#125;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;button onclick&#x3D;&quot;dec()&quot;&gt;外部减&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button onclick&#x3D;&quot;arrNum()&quot;&gt;外部响应数组&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function dec()&#123;</span><br><span class="line">            &#x2F;&#x2F; Vue.set(outData,&#39;num&#39;,--app.num)  &#x2F;&#x2F;ok</span><br><span class="line">            Vue.set(app,&#39;num&#39;,--app.num)</span><br><span class="line">        &#125;</span><br><span class="line">        function arrNum()&#123;</span><br><span class="line">            &#x2F;&#x2F; app.arr[0] &#x3D; &#39;a&#39;;  &#x2F;&#x2F;这样写，不会使视图上立即响应   注意：虽然没有响应，但是对应的值已经改了   如果其余地方触发了data里的响应，那么视图里这个地方也会随着响应更新出来</span><br><span class="line">            Vue.set(app.arr,&#39;0&#39;,&#39;a&#39;); &#x2F;&#x2F;立即响应  ok</span><br><span class="line">        &#125;</span><br><span class="line">        var outData &#x3D; &#123;</span><br><span class="line">            num : 1,</span><br><span class="line">            arr : [1,2,3,4,5,6],</span><br><span class="line">        &#125;;</span><br><span class="line">        const app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&quot;#app&quot;,</span><br><span class="line">            data:outData,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                add()&#123;</span><br><span class="line">                    this.num ++;</span><br><span class="line">                &#125;,</span><br><span class="line">                inNum()&#123;</span><br><span class="line">                    &#x2F;&#x2F; this.arr[0] &#x3D; &#39;b&#39;; &#x2F;&#x2F;不会立即响应  理由同上</span><br><span class="line">                    Vue.set(this.arr,&#39;0&#39;,&#39;b&#39;); &#x2F;&#x2F;ok</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">        &#x2F;&#x2F; 由于 JavaScript 的限制，Vue 不能检测以下变动的数组：</span><br><span class="line">        &#x2F;&#x2F; 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] &#x3D; newValue</span><br><span class="line">        &#x2F;&#x2F; 当你修改数组的长度时，例如：vm.items.length &#x3D; newLength</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Template模板</p>
+</blockquote>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> template模板，在new实例绑定的el元素，用template模板覆盖住绑定的原有位置元素，不管该元素本来的DOM结构</li>
+<li>第一种Template模板   写在new实例内  用template覆盖原有div’#app’</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">       &#123;&#123;message&#125;&#125;</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">       const app &#x3D; new Vue(&#123;</span><br><span class="line">           el:&#39;#app&#39;,</span><br><span class="line">           data:&#123;</span><br><span class="line">               message:&#39;Helloworld&#39;,</span><br><span class="line">           &#125;,</span><br><span class="line">           template:&#96;</span><br><span class="line">               &lt;h1 style&#x3D;&quot;color:#f40&quot;&gt;第一种内部Template&lt;&#x2F;h1&gt;</span><br><span class="line">           &#96;</span><br><span class="line">       &#125;)</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h6><html>
+
+<h1 style="color:#f40">第一种内部Template</h1>
+
+</html>
+
+<hr>
+<ul>
+<li>第二种template模板，适合结构复杂，跟第一种差不多，只不过把new实例中的template写到到标签中，用template模板覆盖原有绑定的el的DOM</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123;message&#125;&#125;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;template id&#x3D;&quot;app1&quot;&gt;</span><br><span class="line">    &lt;div style&#x3D;&quot;width: 100px;height: 100px;background-color: tan&quot;&gt;</span><br><span class="line">        &#123;&#123;message + &#39;外部&#39;&#125;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    const app &#x3D; new Vue(&#123;</span><br><span class="line">        el:&#39;#app&#39;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            message:&#39;Helloworld&#39;,</span><br><span class="line">        &#125;,</span><br><span class="line">        template:&quot;#app1&quot;,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>通俗来讲，用template模板替换掉<code>&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</code>,不管原有的<code>&lt;div&gt;</code>结构</p>
+<h6 id="效果如下-1"><a href="#效果如下-1" class="headerlink" title="效果如下"></a>效果如下</h6><html>
+ <div style="width: 100px;height: 100px;background-color: tan">
+            helloworld外部
+        </div>
+</html>
+
+<hr>
+<ul>
+<li>第三种template模板，适合多个模板存在时，页面简洁明了，用script标签还可以通过外部src引用，这样就可以在这个文件用template引用另一个文件作为模板</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &#123;&#123;message&#125;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;!-- 第三种template模板 --&gt;</span><br><span class="line">    &lt;!-- type&#x3D;&quot;x-template&quot; 这是Vue规定的  必须这样使用模板，可使用src引用外部定义的标签模板 --&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;x-template&quot; id&#x3D;&quot;app2&quot;&gt; &gt;</span><br><span class="line">        &lt;h1 style&#x3D;&quot;font-size:18px;color:#f40;&quot;&gt;</span><br><span class="line">            &#123;&#123;message + &#39;可script外部引用&#39;&#125;&#125;</span><br><span class="line">        &lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">        const app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&#39;#app&#39;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                message:&#39;Helloworld&#39;,</span><br><span class="line">            &#125;,</span><br><span class="line">            template:&quot;#app2&quot;,</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="效果如下-2"><a href="#效果如下-2" class="headerlink" title="效果如下"></a>效果如下</h6><html>
+<h1 style="font-size:18px;color:#f40;">
+    helloworld可script外部引用
+</h1>
+</html>
+
+<hr>
+<blockquote>
+<p>propsData</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;selflabel&gt;&lt;&#x2F;selflabel&gt;   &lt;!-- 1 类似于组件 --&gt;</span><br><span class="line">   &lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;      &lt;!-- 2 一般用这种 --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       const self &#x3D; Vue.extend(&#123;</span><br><span class="line">           &#x2F;&#x2F; template:&quot;&lt;h1&gt;&quot; + count + &quot;&lt;&#x2F;h1&gt;&quot;, error</span><br><span class="line">           template:&quot;&lt;h1&gt;&#123;&#123;count&#125;&#125;-&#123;&#123;pd&#125;&#125;&lt;&#x2F;h1&gt;&quot;,</span><br><span class="line">           data()&#123;</span><br><span class="line">               return &#123;</span><br><span class="line">                   count:1,</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           props:[&quot;pd&quot;]   &#x2F;&#x2F;props接收传入的变量， 一方传入数据那另一方当然选择接收数据</span><br><span class="line">       &#125;)</span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F;然后绑定到钩子函数上</span><br><span class="line">   &#x2F;&#x2F;    new self.$mount(&#39;selflabel&#39;); error</span><br><span class="line">      new self(&#123;propsData:&#123;pd:&#39;传值1&#39;&#125;&#125;).$mount(&#39;selflabel&#39;);  &#x2F;&#x2F;1  1-传值1</span><br><span class="line">      new self(&#123;propsData:&#123;pd:&#39;传值2&#39;&#125;&#125;).$mount(&#39;#app&#39;);       &#x2F;&#x2F;2  1-传值2</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据-键值对-，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用"><a href="#vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据-键值对-，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用" class="headerlink" title="vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据(键值对)，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用"></a>vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据(键值对)，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用</h6><hr>
+<blockquote>
+<p>methods</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123;count&#125;&#125;</span><br><span class="line">    &lt;p&gt;&lt;button @click&#x3D;&quot;add(param,$event)&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt; &lt;!-- $event是鼠标获取的一切属性和事件   与...onclick &#x3D; function (e)&#123;&#125;的e是同样的作用  --&gt;</span><br><span class="line">    &lt;p&gt;&lt;selfbtn @click.native&#x3D;&quot;add(param1)&quot;&gt;&lt;&#x2F;selfbtn&gt;&lt;&#x2F;p&gt; &lt;!-- 组件要调用构造器的methods方法时，需使用vue提供的.native方法，及调用构造器的原生方法 --&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;button onclick&#x3D;&quot;app.add(30)&quot;&gt;外部调用构造器方法&lt;&#x2F;button&gt; &lt;!-- 外部调用vue构造器的方法 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const selfbtn &#x3D; &#123;</span><br><span class="line">        template:&#96;&lt;button style&#x3D;&quot;background-color:#ccc&quot;&gt;组件调用构造器方法&lt;&#x2F;button&gt;&#96;</span><br><span class="line">    &#125;</span><br><span class="line">    const app &#x3D; new Vue(&#123;</span><br><span class="line">        el:&quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            param:10,</span><br><span class="line">            param1:20,</span><br><span class="line">            count:1</span><br><span class="line">        &#125;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            &quot;selfbtn&quot;:selfbtn</span><br><span class="line">        &#125;</span><br><span class="line">        ,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            add(index,ev)&#123;</span><br><span class="line">                console.log(ev); &#x2F;&#x2F;$event 是获取MouseEvent</span><br><span class="line">                this.count &#x3D; this.count + index;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>watch</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">        &#123;&#123;count&#125;&#125;</span><br><span class="line">        &lt;p&gt;&#123;&#123;src&#125;&#125;&lt;&#x2F;p&gt;    </span><br><span class="line">        &lt;p&gt;&#123;&#123;src1&#125;&#125;&lt;&#x2F;p&gt;    </span><br><span class="line">        &lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        const app &#x3D; new Vue(&#123;</span><br><span class="line">            el:&quot;#app&quot;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                count:1,</span><br><span class="line">                src:&#39;不大于10&#39;,</span><br><span class="line">                src1:&#39;不大于5&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods:&#123;</span><br><span class="line">                add()&#123;</span><br><span class="line">                    this.count +&#x3D; 2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            watch:&#123;</span><br><span class="line">                count(newvalue,oldvalue)&#123;  &#x2F;&#x2F;一般用法</span><br><span class="line">                    if(newvalue &gt; 10)&#123;</span><br><span class="line">                        this.src &#x3D; &#39;大于10&#39;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        &#x2F;&#x2F;构造器外部用法，vue提供了&#39;$watch&#39;方法，一般来说vue提供的带&#39;$&#39;的都是可以外部使用的</span><br><span class="line">        app.$watch(&#39;count&#39;,function (newval,oldval)&#123;</span><br><span class="line">            if(newval &gt; 5)&#123;</span><br><span class="line">                this.src1 &#x3D; &#39;大于5&#39;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        &#x2F;&#x2F; app.$watch(&#39;count&#39;,function (new,oldval)&#123;  &#x2F;&#x2F;error  new是关键字！！</span><br><span class="line">        &#x2F;&#x2F;     if(new &gt; 5)&#123;</span><br><span class="line">        &#x2F;&#x2F;         this.src1 &#x3D; &#39;大于5&#39;;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F; &#125;)</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>vue的官方文档：mixins 选项接受一个混入对象的数组。这些混入实例对象可以像正常的实例对象一样包含选项，他们将在 Vue.extend() 里最终选择使用相同的选项合并逻辑合并。举例：如果你的混入包含一个钩子而创建组件本身也有一个，两个函数将被调用。<br>Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用。</p>
+</blockquote>
+<h6 id="执行顺序：全局定义的mixin-gt-构造器的mixins-gt-原生钩子函数"><a href="#执行顺序：全局定义的mixin-gt-构造器的mixins-gt-原生钩子函数" class="headerlink" title="执行顺序：全局定义的mixin &gt; 构造器的mixins &gt; 原生钩子函数"></a>执行顺序：全局定义的mixin &gt; 构造器的mixins &gt; 原生钩子函数</h6><blockquote>
+<p>mixins还可以定义methods方法，但是mixins里有与原生方法冲突的，则只执行原生的方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123;count&#125;&#125;</span><br><span class="line">    &lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line"> &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     &#x2F;&#x2F;mixin 混入选项，当项目经理提需求时，为不破坏原有结构，故增加mixin选项</span><br><span class="line">     &#x2F;&#x2F;mixins接收一个混入对象的数组</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;全局混入</span><br><span class="line">     Vue.mixin(&#123;</span><br><span class="line">         updated()&#123;</span><br><span class="line">             console.log(&quot;全局mixin下比较执行顺序,全局mixin执行了&quot;);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">     const app &#x3D; new Vue(&#123;</span><br><span class="line">         el:&#39;#app&#39;,</span><br><span class="line">         data:&#123;</span><br><span class="line">             count:1</span><br><span class="line">         &#125;,</span><br><span class="line">         methods:&#123;</span><br><span class="line">             add()&#123;</span><br><span class="line">                 this.count ++;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         updated()&#123;</span><br><span class="line">             console.log(&quot;构造器内部原生方法比较mixin，原生updated执行了&quot;);</span><br><span class="line">         &#125;,</span><br><span class="line">         &#x2F;&#x2F; mixins:&#123;    error！！！！！</span><br><span class="line">         &#x2F;&#x2F;     updated()&#123;</span><br><span class="line">         &#x2F;&#x2F;         console.log(&quot;构造器内部mixins,count更新成：&quot; + this.count);</span><br><span class="line">         &#x2F;&#x2F;     &#125;</span><br><span class="line">         &#x2F;&#x2F; &#125;</span><br><span class="line">         mixins:[    &#x2F;&#x2F;数组的的形式！！  因为可能会mixin多个，那就以数组加对象的形式处理多个</span><br><span class="line">             &#123;  updated()&#123;</span><br><span class="line">                 console.log(&quot;构造器内部mixins,count更新成：&quot; + this.count);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         ]</span><br><span class="line">     &#125;)</span><br><span class="line"> &#x2F;&#x2F;    app.mixins &#x3D; [  &#x2F;&#x2F;目前写法不对，待研究</span><br><span class="line"> &#x2F;&#x2F;        &#123;</span><br><span class="line"> &#x2F;&#x2F;            updated()&#123;</span><br><span class="line"> &#x2F;&#x2F;                console.log(&quot;构造器外部mixin，count更新成：&quot; + this.count);</span><br><span class="line"> &#x2F;&#x2F;            &#125;</span><br><span class="line"> &#x2F;&#x2F;        &#125;</span><br><span class="line"> &#x2F;&#x2F;    ];</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="官方mixins例子，查看另一个MD"><a href="#官方mixins例子，查看另一个MD" class="headerlink" title="官方mixins例子，查看另一个MD"></a>官方mixins例子，查看另一个MD</h6><hr>
+<blockquote>
+<p>extends  与mixins很类似   但是接收的是对象不是数组   执行顺序、处理冲突与mixins相同</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">      &#123;&#123;count&#125;&#125;</span><br><span class="line">      &lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F;extends跟mixins很类似</span><br><span class="line">       &#x2F;&#x2F;但extends接收的是对象</span><br><span class="line">       var extendsData &#x3D; &#123;</span><br><span class="line">           updated()&#123;</span><br><span class="line">               console.log(&quot;构造器扩展的&quot;);</span><br><span class="line">           &#125;,</span><br><span class="line">           methods:&#123;   &#x2F;&#x2F;扩展的methods内部方法，如果与构造器原生冲突，则以原生为主</span><br><span class="line">               add()&#123;</span><br><span class="line">                   this.count &#x3D; this.count + 10;   </span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       const app &#x3D; new Vue(&#123;</span><br><span class="line">           el:&#39;#app&#39;,</span><br><span class="line">           data:&#123;</span><br><span class="line">               count:1</span><br><span class="line">           &#125;,</span><br><span class="line">           methods:&#123;</span><br><span class="line">               add()&#123;</span><br><span class="line">                   this.count ++;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           updated()&#123;</span><br><span class="line">               console.log(&quot;构造器内部原生方法比较mixin，原生updated执行了&quot;);</span><br><span class="line">           &#125;,</span><br><span class="line">         extends:extendsData  &#x2F;&#x2F;与mixins很类似 但是接收的是对象</span><br><span class="line">                               &#x2F;&#x2F;先执行扩展选项，再执行原生</span><br><span class="line">       &#125;)</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>delimiters 更改插值方式  相当于防止与其他插值方式冲突</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">      &lt;p&gt;$&#123;count&#125;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123;count&#125;&#125;&lt;&#x2F;p&gt;  &lt;!-- &#39;&#123;&#123;&#125;&#125;&#39;插值方式就没用了 --&gt;</span><br><span class="line">      &lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F;修改插值方式  譬如把&#39;&#123;&#123;&#125;&#125;&#39; 改变成 &#39;$&#123;&#125;&#39;</span><br><span class="line">       const app &#x3D; new Vue(&#123;</span><br><span class="line">           el:&#39;#app&#39;,</span><br><span class="line">           data:&#123;</span><br><span class="line">               count:1</span><br><span class="line">           &#125;,</span><br><span class="line">           methods:&#123;</span><br><span class="line">               add()&#123;</span><br><span class="line">                   this.count ++;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           delimiters:[&quot;$&#123;&quot;,&quot;&#125;&quot;]</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>$destroy() $nextTick() $forceUpdate()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123;count&#125;&#125; ...其实全被覆盖了，也就是挂载到&#39;#app&#39;内,不管原有结构多复杂</span><br><span class="line">&lt;&#x2F;div&gt;      </span><br><span class="line">&lt;p&gt;&lt;button onclick&#x3D;&quot;destory()&quot;&gt;销毁挂载&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;&lt;button onclick&#x3D;&quot;tick()&quot;&gt;数据更新&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const self &#x3D; Vue.extend(&#123;</span><br><span class="line">        template:&#96;&lt;div&gt;</span><br><span class="line">        &#123;&#123;count&#125;&#125;&lt;p&gt;&lt;button @click&#x3D;&quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;&#96;,</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                count:1,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            add()&#123;</span><br><span class="line">                this.count ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        updated() &#123;</span><br><span class="line">            console.log(&quot;视图更新了&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        destroyed()&#123;</span><br><span class="line">            console.log(&quot;销毁挂载执行后&quot;); &#x2F;&#x2F;钩子函数  当执行销毁时就执行了这步生命周期钩子函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    function destory()&#123;</span><br><span class="line">        &#x2F;&#x2F; vm.$destory();  写错单词</span><br><span class="line">        vm.$destroy();   &#x2F;&#x2F;销毁挂载后，之前挂载的组件及事件都不会响应了</span><br><span class="line">    &#125;</span><br><span class="line">    function tick()&#123;</span><br><span class="line">        vm.count &#x3D; 100;</span><br><span class="line">        vm.$nextTick(   &#x2F;&#x2F;里面直接写函数</span><br><span class="line">            function () &#123;</span><br><span class="line">                console.log(&quot;数据更新完成后&quot;); &#x2F;&#x2F;与updated很像   不过.$nextTick()可以更加方便处理由哪个更新完后要执行这个api，譬如：把$nextTick()写在A事件中，A事件发生了就可以立即处理数据更新后的执行这个函数，但是B事件发生了就不能做数据更新后的处理，除非构造器自己定义了updated钩子函数</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;vm.$forceUpdate(); error  下面那步还没执行</span><br><span class="line">    </span><br><span class="line">    const vm &#x3D; new self().$mount(&#39;#app&#39;);  </span><br><span class="line"></span><br><span class="line">    vm.$forceUpdate();  &#x2F;&#x2F;强制视图update，然后会触发钩子函数updated</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>Vue的实例事件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">       &#123;&#123;count&#125;&#125;</span><br><span class="line">       &lt;p&gt;&lt;button @click &#x3D; &quot;add()&quot;&gt;add&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;</span><br><span class="line">       &lt;p&gt;&lt;button onclick &#x3D; &quot;reduce()&quot;&gt;reduce&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">       &lt;p&gt;&lt;button onclick &#x3D; &quot;reduceOnce()&quot;&gt;reduceOnce&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">       &lt;p&gt;&lt;button onclick &#x3D; &quot;reduceOff()&quot;&gt;reduceOff&lt;&#x2F;button&gt;&lt;&#x2F;p&gt;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   &lt;script&gt;</span><br><span class="line">       const app &#x3D; new Vue(&#123;</span><br><span class="line">           el:&#39;#app&#39;,</span><br><span class="line">           data:&#123;</span><br><span class="line">               count:1</span><br><span class="line">           &#125;,</span><br><span class="line">           methods:&#123;</span><br><span class="line">               add()&#123;</span><br><span class="line">                   this.count ++;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">       app.$on(&#39;reduce1&#39;,function()&#123;</span><br><span class="line">           this.count --;</span><br><span class="line">       &#125;);</span><br><span class="line">       app.$once(&#39;reduceOnce1&#39;,function()&#123;</span><br><span class="line">           this.count --;</span><br><span class="line">       &#125;);</span><br><span class="line">       function reduce()&#123;</span><br><span class="line">           app.$emit(&#39;reduce1&#39;)</span><br><span class="line">       &#125;</span><br><span class="line">       function reduceOnce()&#123;</span><br><span class="line">           app.$emit(&#39;reduceOnce1&#39;);</span><br><span class="line">       &#125;</span><br><span class="line">       function reduceOff()&#123;</span><br><span class="line">           app.$off(&#39;reduce1&#39;);</span><br><span class="line">           console.log(&#39;已解绑reduce1&#39;);</span><br><span class="line">       &#125;</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="vm-emit-eventName-…args"><a href="#vm-emit-eventName-…args" class="headerlink" title="vm.$emit( eventName, […args] )"></a>vm.$emit( eventName, […args] )</h6><h6 id="触发当前实例上的事件。附加参数都会传给监听器回调。-第一个参数是需要触发的事件名，第二个参数是该事件需要的传参"><a href="#触发当前实例上的事件。附加参数都会传给监听器回调。-第一个参数是需要触发的事件名，第二个参数是该事件需要的传参" class="headerlink" title="触发当前实例上的事件。附加参数都会传给监听器回调。  第一个参数是需要触发的事件名，第二个参数是该事件需要的传参"></a>触发当前实例上的事件。附加参数都会传给监听器回调。  第一个参数是需要触发的事件名，第二个参数是该事件需要的传参</h6><hr>
+<blockquote>
+<p>slot 组件插值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;self&gt;  &lt;!-- 进行插值 --&gt;</span><br><span class="line">        &lt;span slot&#x3D;&quot;slotName11&quot;&gt;&#123;&#123;getData.name&#125;&#125;&lt;&#x2F;span&gt;  &lt;!-- slot&#x3D;&quot;...&quot;只是绑定slot的name --&gt;</span><br><span class="line">        &lt;span slot&#x3D;&quot;slotName22&quot;&gt;&#123;&#123;getData.sex&#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span slot&#x3D;&quot;slotName33&quot;&gt;&#123;&#123;getData.like&#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;&#x2F;self3&gt;</span><br><span class="line">&lt;&#x2F;div&gt;   </span><br><span class="line"> </span><br><span class="line">    &lt;template id&#x3D;&quot;tep&quot;&gt;  &lt;!-- 在html中写模板   只能用template --&gt;</span><br><span class="line">        &lt;div&gt;    &lt;!-- template内需要有一个大容器包裹住 --&gt;</span><br><span class="line">            &lt;p&gt;姓名:&lt;slot name&#x3D;&#39;slotName11&#39;&gt;&lt;&#x2F;slot&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;性别:&lt;slot name&#x3D;&#39;slotName22&#39;&gt;&lt;&#x2F;slot&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;爱好:&lt;slot name&#x3D;&#39;slotName33&#39;&gt;&lt;&#x2F;slot&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt; </span><br><span class="line">    &lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const Self &#x3D; &#123;</span><br><span class="line">        template:&#39;#tep&#39;    &#x2F;&#x2F;可以直接绑定元素 让其做为template 然后去挂载到组件上</span><br><span class="line">    &#125;</span><br><span class="line">    const app &#x3D; new Vue(&#123;</span><br><span class="line">        el:&#39;#app&#39;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            getData:&#123;</span><br><span class="line">                name : &#39;admin&#39;,</span><br><span class="line">                sex : &#39;man&#39;,</span><br><span class="line">                like : &#39;like&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            &quot;self&quot;:Self</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/Dom/" rel="prev" title="Dom">
+      <i class="fa fa-chevron-left"></i> Dom
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/web_api/" rel="next" title="web_api">
+      web_api <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了-即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’-39-把换行符转义；其二：在需要换行处-使用’-’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；"><span class="nav-number">1.</span> <span class="nav-text">注意：template使用的是引号，这就意味着不能处理换行符，引号到换行符就截止了,即只能写在一行。如果想写在多行，有三种方法，其一：在需换行处使用转义字符’&#39;,把换行符转义；其二：在需要换行处,使用’+’字符串拼接起来；其三：不用引号，改用反引号，就可以换行，但是不能拼接；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#效果如下"><span class="nav-number">2.</span> <span class="nav-text">效果如下</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">第一种内部Template</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#效果如下-1"><span class="nav-number">1.</span> <span class="nav-text">效果如下</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#效果如下-2"><span class="nav-number">2.</span> <span class="nav-text">效果如下</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">
+    helloworld可script外部引用
+</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据-键值对-，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用"><span class="nav-number">1.</span> <span class="nav-text">vue的props属性选项，是选择接收数据的。譬如：向标签或者子组件传入数据(键值对)，那其内部当然要选择哪些传入的数据内部愿意接收。就相当于A给B一个东西，B当然可以选择要不要这个东西为自己所用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#执行顺序：全局定义的mixin-gt-构造器的mixins-gt-原生钩子函数"><span class="nav-number">2.</span> <span class="nav-text">执行顺序：全局定义的mixin &gt; 构造器的mixins &gt; 原生钩子函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#官方mixins例子，查看另一个MD"><span class="nav-number">3.</span> <span class="nav-text">官方mixins例子，查看另一个MD</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#vm-emit-eventName-…args"><span class="nav-number">4.</span> <span class="nav-text">vm.$emit( eventName, […args] )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#触发当前实例上的事件。附加参数都会传给监听器回调。-第一个参数是需要触发的事件名，第二个参数是该事件需要的传参"><span class="nav-number">5.</span> <span class="nav-text">触发当前实例上的事件。附加参数都会传给监听器回调。  第一个参数是需要触发的事件名，第二个参数是该事件需要的传参</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="perJust"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">perJust</p>
+  <div class="site-description" itemprop="description">分享技术，记录成长</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/perJust" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;perJust" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">perJust</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">79k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:12</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
